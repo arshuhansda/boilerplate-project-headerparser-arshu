@@ -18,7 +18,7 @@ const ipMiddleware = function(req, res, next) {
     next();
 };
 
-// on localhost you'll see 127.0.0.1 if you're using IPv4 
+// on localhost you'll see 127.0.0.1 if you're using IPv4
 // or ::1, ::ffff:127.0.0.1 if you're using IPv6
 app.use(requestIp.mw())
 
@@ -38,11 +38,11 @@ app.get("/api/hello", function (req, res) {
 });
 
 app.get("/api/whoami", function (req, res) {
-  var ipAddress = req.clientIP;
+  const ipaddress = req.connection.remoteAddress;
   var lang = req.acceptsLanguages();
   var sw = req.get('User-Agent');
   res.json({
-    ipaddress: ipAddress,
+    ipaddress: ipaddress,
     language: lang[0],
     software: sw
   });
